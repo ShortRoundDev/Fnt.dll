@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL_Fnt", "SDL_Fnt\SDL_Fnt.vcxproj", "{A223EA52-C17F-4131-B0F3-7B1C73141863}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fnt", "Fnt\Fnt.vcxproj", "{A223EA52-C17F-4131-B0F3-7B1C73141863}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDL_Fnt_Test", "SDL_Fnt_Test\SDL_Fnt_Test.vcxproj", "{9C747C96-0534-4E5B-B2FB-39AF666E0B62}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fnt_Test", "Fnt_Test\Fnt_Test.vcxproj", "{9C747C96-0534-4E5B-B2FB-39AF666E0B62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

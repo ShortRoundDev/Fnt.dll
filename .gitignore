@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#Fnt test files
+Fnt_Test/*.png
+Fnt_Test/*.fnt
