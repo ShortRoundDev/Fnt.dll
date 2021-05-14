@@ -9,6 +9,7 @@
 
 #pragma once
 #include <stdint.h>
+#include "SDL.h"
 
 #define BLOCK_HEADER_SIZE 5
 #define FNT_CHAR_SIZE 20
@@ -104,8 +105,12 @@ typedef struct _Fnt_Common {
 typedef struct _Fnt_Pages {
 	/** The header for the current block */
 	Fnt_Block_Header blockHeader;
+	/** Total page textures */
+	int totalPages;
 	/** Array of null terminated strings */
 	char* pageNames; // Don't trust the angelcode spec on size guarantees; check buffer size from block header
+	/** Array of textures loaded with the pages provided */
+	SDL_Texture** pageTextures;
 } Fnt_Pages;
 
 /** This tag describes one character in the font. There is one for each included character in the font.

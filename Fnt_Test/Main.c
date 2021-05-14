@@ -1,35 +1,39 @@
 ﻿#include <stdio.h>
 #include <Fnt.h>
 #include <stdint.h>
+#include "SDL.h"
 
 int main(int argc, char** argv)
 {
-	uint8_t utf8[17] = {
-		0xf0, 0x90, 0x8d, 0x88, // 4 byte character
-		0xed, 0x95, 0x9c,		// 3 byte character
-		0xe2, 0x82, 0xac,		// 3 byte character
-		0xe0, 0xa4, 0xb9,		// 3 byte character
-		0xc2, 0xa2,				// 2 byte character
-		0x24,					// 1 byte character
-		0x00					// null terminator
-	};
-
-	uint8_t* ptr = utf8;
-	while (ptr != NULL)
+	SDL_Renderer* renderer = NULL;
+	SDL_Window* window = NULL;
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		uint32_t out;
-		ptr = _Fnt_GetNextCharPoint_UTF8(ptr, &out);
-		printf("0x%06X\n", out);
+		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+		return 0;
 	}
+	SDL_CreateWindowAndRenderer(800, 600, 0, &window, &renderer);
 
-	printf("-----\n");
+	Fnt fnt = { 0 };
+	Fnt_LoadFromFileW(L"Test3.fnt", &fnt, "", renderer);
 
-	LPWSTR str = L"𤭢𐐷€$\0";
-	ptr = (uint8_t*)str;
-	while (ptr != NULL)
+	bool quit = false;
+	while (!quit)
 	{
-		uint32_t out;
-		ptr = _Fnt_GetNextCharPoint_UTF16(ptr, &out);
-		printf("0x%06X\n", out);
+		SDL_RenderClear(renderer);
+		SDL_Event e;
+		while (SDL_PollEvent(&e))
+		{
+			if(e.type == SDL_QUIT)
+				quit = true;
+		}
+
+		SDL_FPoint cursor = { .x = 10.0f, .y = 10.0f };
+
+		Fnt_RenderTextUTF16(renderer, L"HELLO WORLD", &fnt, NULL, &cursor);
+		SDL_RenderPresent(renderer);
+
 	}
+	return 2;
+
 }

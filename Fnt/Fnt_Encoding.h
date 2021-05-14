@@ -19,5 +19,5 @@ typedef enum _Fnt_Encoding
 } Fnt_Encoding;
 
 //uint8_t* _Fnt_GetNextCharPoint_OEM(uint8_t* oemString, uint32_t* out);
-DLLEXPORT uint8_t* _Fnt_GetNextCharPoint_UTF8(uint8_t* utf8String, uint32_t* out);
-DLLEXPORT uint8_t* _Fnt_GetNextCharPoint_UTF16(uint8_t* utf16String, uint32_t* out);
+uint8_t* _Fnt_GetNextCharPoint_UTF8(uint8_t* utf8String, uint32_t* out);
+uint8_t* _Fnt_GetNextCharPoint_UTF16(uint8_t* utf16String, uint32_t* out);

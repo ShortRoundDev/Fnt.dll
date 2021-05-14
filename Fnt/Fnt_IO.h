@@ -8,7 +8,7 @@
 * @param fnt A pointer to the Fnt struct that will occupy the information. Allocations
 *			 on members are done within this call.
 */
-int DLLEXPORT Fnt_LoadFromFileW(LPCWSTR path, Fnt* fnt);
+int DLLEXPORT Fnt_LoadFromFileW(LPCWSTR path, Fnt* fnt, const char* resourcePath, const SDL_Renderer* renderer);
 /**
 * Attempts to load a font file from the given path
 * @return 0 on success, or an error code on failure
@@ -17,7 +17,7 @@ int DLLEXPORT Fnt_LoadFromFileW(LPCWSTR path, Fnt* fnt);
 * @param fnt A pointer to the Fnt struct that will occupy the information. Allocations
 *			 on members are done within this call.
 */
-int DLLEXPORT Fnt_LoadFromFile(const char* path, Fnt* fnt);
+int DLLEXPORT Fnt_LoadFromFile(const char* path, Fnt* fnt, const char* resourcePath, const SDL_Renderer* renderer);
 
 
 /** Loads a font file from the given file pointer
@@ -25,4 +25,6 @@ int DLLEXPORT Fnt_LoadFromFile(const char* path, Fnt* fnt);
 * @param fp A pointer to an opened file with the Fnt file information
 * @param fnt A pointer to the Fnt struct that will occupy the information. Allocations
 *			 on members are done within this call. */
-int DLLEXPORT Fnt_LoadReadFile(FILE* fp, Fnt* fnt);
+int DLLEXPORT Fnt_LoadReadFile(FILE* fp, Fnt* fnt, const char* resourcePath, const SDL_Renderer* renderer);
+
+void _Fnt_GetTotalPages(Fnt_Pages* pages, int* totalPages, int* pageNameLength);
