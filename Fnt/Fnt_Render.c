@@ -1,9 +1,8 @@
 #include "Fnt_Render.h"
 
-SDL_FPoint Fnt_RenderText(const char* text, Fnt* fnt)
+SDL_FPoint Fnt_RenderText(const char* text, Fnt* fnt, Fnt_Encoding encoding)
 {
-	SDL_FPoint p = { 0 };
-	return p;
+
 }
 
 
@@ -14,7 +13,7 @@ bool _Fnt_FindCharCodeLocation(Fnt* fnt, wchar_t charCode, SDL_Point* location) 
 	return _Fnt_BinarySearchCharCodeLocation(fnt->chars.chars, fnt->chars.chars + fnt->chars.numberOfFntChars, charCode, location);
 }
 
-bool _Fnt_BinarySearchCharCodeLocation(Fnt_Char* start, Fnt_Char* end, wchar_t charCode, SDL_Point* location) {
+bool _Fnt_BinarySearchCharCodeLocation(Fnt_Char* start, Fnt_Char* end, uint32_t charCode, SDL_Point* location) {
 	ptrdiff_t width = (end - start);
 	Fnt_Char* mid = start + width / 2;
 	if (mid->id == charCode) {

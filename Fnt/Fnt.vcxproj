@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Fnt_Encoding.c" />
     <ClCompile Include="Fnt_IO.c" />
     <ClCompile Include="Fnt_Parse.c" />
     <ClCompile Include="Fnt_Render.c" />

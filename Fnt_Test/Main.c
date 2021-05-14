@@ -1,27 +1,35 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <Fnt.h>
+#include <stdint.h>
 
 int main(int argc, char** argv)
 {
-	printf("Hello world!");
-	Fnt fnt;
+	uint8_t utf8[17] = {
+		0xf0, 0x90, 0x8d, 0x88, // 4 byte character
+		0xed, 0x95, 0x9c,		// 3 byte character
+		0xe2, 0x82, 0xac,		// 3 byte character
+		0xe0, 0xa4, 0xb9,		// 3 byte character
+		0xc2, 0xa2,				// 2 byte character
+		0x24,					// 1 byte character
+		0x00					// null terminator
+	};
 
-	wchar_t buffer[1024];
-	GetCurrentDirectoryW(1024, buffer);
-	wprintf(L"%ls", buffer);
-
-	Fnt_LoadFromFileW(L".\\Test3.fnt", &fnt);
-
-	SDL_Point p;
-	for (wchar_t i = L'A'; i < L'Z'; i++)
+	uint8_t* ptr = utf8;
+	while (ptr != NULL)
 	{
-		if (!_Fnt_FindCharCodeLocation(&fnt, i, &p))
-		{
-			wprintf(L"ERROR on %lc\n", i);
-		}
-		else
-		{
-			wprintf(L"%c => x: %d\ty: %d\n", i, p.x, p.y);
-		}
+		uint32_t out;
+		ptr = _Fnt_GetNextCharPoint_UTF8(ptr, &out);
+		printf("0x%06X\n", out);
+	}
+
+	printf("-----\n");
+
+	LPWSTR str = L"𤭢𐐷€$\0";
+	ptr = (uint8_t*)str;
+	while (ptr != NULL)
+	{
+		uint32_t out;
+		ptr = _Fnt_GetNextCharPoint_UTF16(ptr, &out);
+		printf("0x%06X\n", out);
 	}
 }

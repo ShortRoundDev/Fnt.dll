@@ -17,3 +17,4 @@
 #include "Fnt_IO.h"
 #include "Fnt_Parse.h"
 #include "Fnt_Render.h"
+#include "Fnt_Encoding.h"
