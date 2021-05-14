@@ -41,6 +41,8 @@ SDL_FPoint Fnt_RenderTextUTF16(SDL_Renderer* renderer, const char* text, Fnt* fn
 	uint8_t* ptr = (uint8_t*)text;
 	while (ptr != NULL)
 	{
+		if (ptr == NULL || *ptr == 0)
+			return *cursor;
 		uint32_t charCode = 0;
 		ptr = _Fnt_GetNextCharPoint_UTF16(ptr, &charCode);
 		Fnt_Char* fntChar = NULL;

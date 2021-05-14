@@ -47,7 +47,7 @@ uint8_t* _Fnt_GetNextCharPoint_UTF8(uint8_t* utf8String, uint32_t* out)
 uint8_t* _Fnt_GetNextCharPoint_UTF16(uint8_t* utf16String, uint32_t* out)
 {
 	uint16_t code = *((uint16_t*)utf16String);
-	if (code & UTF16_MASK_HIGH)
+	if ((code & UTF16_MASK_HIGH) == UTF16_MASK_HIGH)
 	{
 		uint16_t low = *(((uint16_t*)utf16String) + 1);
 		*out = ((((uint32_t)(code - UTF16_MASK_HIGH)) * 0x0400) | (low - UTF16_MASK_LOW)) + 0x10000;

@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 	SDL_CreateWindowAndRenderer(800, 600, 0, &window, &renderer);
 
 	Fnt fnt = { 0 };
-	Fnt_LoadFromFileW(L"Test3.fnt", &fnt, "", renderer);
+	Fnt_LoadFromFileW(L"Han3.fnt", &fnt, "", renderer);
 
 	bool quit = false;
 	while (!quit)
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
 
 		SDL_FPoint cursor = { .x = 10.0f, .y = 10.0f };
 
-		Fnt_RenderTextUTF16(renderer, L"HELLO WORLD", &fnt, NULL, &cursor);
+		Fnt_RenderTextUTF16(renderer, L"안녕하세요", &fnt, NULL, &cursor);
 		SDL_RenderPresent(renderer);
 
 	}
